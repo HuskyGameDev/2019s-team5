@@ -21,9 +21,10 @@ public class MLanternControl : MonoBehaviour {
     [SerializeField]
     private float maxEffectDist;//How far out it can be held and be affective
     [SerializeField]
-    private Vector3 fixedPoint; //The fixed position to compare the current position to
+    private Transform fixedPoint; //The fixed position to compare the current position to
 
-    float triggerTemp, candleTemp, ratio;
+    private float triggerTemp, candleTemp, ratio;
+    public float effectiveRatio; //Used to impact the effective range of the lantern light
 
 	// Use this for initialization
 	void Start () {
@@ -31,15 +32,15 @@ public class MLanternControl : MonoBehaviour {
         candleLight.range = minMaxCandleLight[0];
 
         //replace this line with the player's location
-        fixedPoint = transform.position;
+        //fixedPoint = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ratio = Vector3.Magnitude(transform.position - fixedPoint) / maxEffectDist;
+        ratio = (effectiveRatio * Vector3.Magnitude(transform.position - fixedPoint.position) / maxEffectDist);
 
-        triggerTemp = .5f * ratio * minMaxCandleTrigger[1];
-        candleTemp = .5f * ratio * minMaxCandleLight[1];
+        triggerTemp = ratio * minMaxCandleTrigger[1];
+        candleTemp =  ratio * minMaxCandleLight[1];
 
         triggerTemp = Mathf.Clamp(triggerTemp, minMaxCandleTrigger[0], minMaxCandleTrigger[1]);
         candleTemp = Mathf.Clamp(candleTemp, minMaxCandleLight[0], minMaxCandleLight[1]);

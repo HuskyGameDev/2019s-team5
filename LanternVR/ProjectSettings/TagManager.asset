@@ -17,6 +17,8 @@ TagManager:
   - SnapSaucer
   - Head
   - CandleTriggered
+  - TeleportIgnore
+  - TriggerIgnore
   layers:
   - Default
   - TransparentFX

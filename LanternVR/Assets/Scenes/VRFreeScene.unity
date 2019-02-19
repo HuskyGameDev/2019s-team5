@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 392071222}
   - component: {fileID: 392071221}
   - component: {fileID: 392071223}
+  - component: {fileID: 392071224}
   m_Layer: 0
   m_Name: lantern
   m_TagString: Untagged
@@ -348,7 +349,21 @@ MonoBehaviour:
   - 2
   - 8.5
   maxEffectDist: 2
-  fixedPoint: {x: 0, y: 0, z: 0}
+  fixedPoint: {fileID: 0}
+--- !u!64 &392071224
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 392071219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300006, guid: 78e07abeaa873a1459e4b8ad89e970e4, type: 3}
 --- !u!1 &879980585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1204,7 @@ GameObject:
   - component: {fileID: 1848335764}
   - component: {fileID: 1848335763}
   - component: {fileID: 1848335762}
+  - component: {fileID: 1848335765}
   m_Layer: 0
   m_Name: handle
   m_TagString: Untagged
@@ -1255,6 +1271,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1848335765
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1848335761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300004, guid: 78e07abeaa873a1459e4b8ad89e970e4, type: 3}
 --- !u!1 &1927452796
 GameObject:
   m_ObjectHideFlags: 0
