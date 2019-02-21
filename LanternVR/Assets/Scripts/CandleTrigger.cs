@@ -15,12 +15,15 @@ public class CandleTrigger : MonoBehaviour {
     void Update() {
         if(weakList.Count != 0) {
             foreach (WeakPoint wp in weakList) {
-                Physics.Raycast(transform.position, wp.transform.position - transform.position, out hit);
+                if(wp != null) {
+                    Physics.Raycast(transform.position, wp.transform.position - transform.position, out hit);
 
-                if(hit.transform == wp.transform) {
-                    wp.Seen(true);
-                } else {
-                    wp.Seen(false);
+                    if (hit.transform == wp.transform) {
+                        wp.Seen(true);
+                    }
+                    else {
+                        wp.Seen(false);
+                    }
                 }
 
             }
