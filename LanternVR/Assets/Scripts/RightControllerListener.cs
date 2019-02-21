@@ -276,7 +276,7 @@
         {
             if (triggerButtonEvents)
             {
-                gun.GetComponent<GunShoot>().FireProjectile();
+                gun.GetComponent<ShootGun>().Fire();
             }
         }
 

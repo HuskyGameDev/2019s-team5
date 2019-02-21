@@ -10,9 +10,11 @@ public class ActivateTakeDamage : MonoBehaviour {
 
 
     void OnTriggerEnter(Collider col) {
-        if (!triggered && col.transform.name == "bat") {
+        if (!triggered && (col.transform.name == "bat" || col.transform.name == "Sphere")) {
             parentNode.SubtractHealth(); // call TakeDamage on an object collision
             triggered = true;            //Object can't take anymore damage
+            gameObject.SetActive(false);
+            Debug.Log(col.transform.name);
         }
     }
 
