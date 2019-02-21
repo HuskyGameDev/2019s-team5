@@ -37,8 +37,8 @@ GameObject:
   - component: {fileID: 33636330712830436}
   - component: {fileID: 23240352261573942}
   - component: {fileID: 54979951321943366}
-  - component: {fileID: 64699862080056512}
   - component: {fileID: 114102389946889558}
+  - component: {fileID: 64699862080056512}
   - component: {fileID: 114768254658515848}
   - component: {fileID: 114446104849810570}
   m_Layer: 0
@@ -54,14 +54,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158614124943266}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 20.158, y: 0.871, z: -0.5010612}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -0.241, y: 1.135, z: -1.391}
   m_LocalScale: {x: 0.71, y: 2, z: 0.71}
   m_Children:
   - {fileID: 4994836131746776}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!4 &4994836131746776
 Transform:
   m_ObjectHideFlags: 1
