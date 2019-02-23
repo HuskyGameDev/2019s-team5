@@ -605,6 +605,8 @@
     <Compile Include="Assets\Scripts\ActivateTakeDamage.cs" />
     <Compile Include="Assets\Scripts\CandleTrigger.cs" />
     <Compile Include="Assets\Scripts\MLanternControl.cs" />
+    <Compile Include="Assets\Scripts\RightControllerListener.cs" />
+    <Compile Include="Assets\Scripts\ShootGun.cs" />
     <Compile Include="Assets\Scripts\TakeDamage.cs" />
     <Compile Include="Assets\Scripts\WeakPoint.cs" />
     <Compile Include="Assets\VRTK\Examples\ExampleResources\SceneResources\[001 - Interactions] ControllerEvents\Scripts\VRTKExample_ControllerEventsDelegateListeners.cs" />

@@ -1149,7 +1149,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106496006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1158,7 +1158,7 @@ Transform:
   - {fileID: 1189173317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &107636559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 1d9e4c444832d5e47bb845c19eeb1b40,
@@ -11820,7 +11820,7 @@ MonoBehaviour:
   - 7.5
   - 7.5
   maxEffectDist: 1.00325
-  fixedPoint: {fileID: 0}
+  fixedPoint: {fileID: 106496007}
   effectiveRatio: 1
 --- !u!23 &1776948707
 MeshRenderer:
