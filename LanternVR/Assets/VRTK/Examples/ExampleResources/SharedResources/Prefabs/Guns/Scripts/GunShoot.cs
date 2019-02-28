@@ -12,31 +12,38 @@
 
         protected virtual void OnEnable()
         {
+            UnityEngine.Debug.Log("444");
             linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
 
             if (linkedObject != null)
             {
+                UnityEngine.Debug.Log("555");
                 linkedObject.InteractableObjectUsed += InteractableObjectUsed;
             }
         }
 
         protected virtual void OnDisable()
         {
+            UnityEngine.Debug.Log("333");
             if (linkedObject != null)
             {
+                UnityEngine.Debug.Log("666");
                 linkedObject.InteractableObjectUsed -= InteractableObjectUsed;
             }
         }
 
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
         {
+            UnityEngine.Debug.Log("111");
             FireProjectile();
+            UnityEngine.Debug.Log("222");
         }
 
         protected virtual void FireProjectile()
         {
             if (projectile != null && projectileSpawnPoint != null)
             {
+                
                 GameObject clonedProjectile = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
                 Rigidbody projectileRigidbody = clonedProjectile.GetComponent<Rigidbody>();
                 float destroyTime = 0f;
