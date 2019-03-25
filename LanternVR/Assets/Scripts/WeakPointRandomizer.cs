@@ -12,21 +12,38 @@ public class WeakPointRandomizer : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+
+
+    private void Awake()
+    {
+        randomWeaknessFunction();
+    }
+
     public void randomWeaknessFunction()
     {
 
-        for(int i = 0; i < weakPoints.Length; i++)
+        for(int i = 0; i < weakPoints.Length; i++)          // set all locations to false 
         {
             weakPoints[i].SetActive(false);
         }
 
-        int numberOfWeakpoints = rnd.Next(1, 3);        //generate random number for the weakpoints
+        int numberOfWeakpoints = rnd.Next(1, 3);            //generate random number for the weakpoints
         
         for(int i = 1; i <= numberOfWeakpoints; i++)
         {
-            int weaknessPosition = rnd.Next(1, 9);
-            weakPoints[weaknessPosition].SetActive(true);
+           
+
+            int weaknessPosition = rnd.Next(1, 9);          // generate random number for the index that will be turned on 
+
+            if(weakPoints[weaknessPosition] == false)
+            {
+                weakPoints[weaknessPosition].SetActive(true);   // activate the weakness at index 
+
+            }
+            else
+            {
+                i--;                                            // decrement i if the index has already been turned on and try again
+            }
         }
 
 
