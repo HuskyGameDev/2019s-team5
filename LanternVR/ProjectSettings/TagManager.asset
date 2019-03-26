@@ -19,6 +19,9 @@ TagManager:
   - CandleTriggered
   - TeleportIgnore
   - TriggerIgnore
+  - SnapGun
+  - SnapLantern
+  - SnapBullet
   layers:
   - Default
   - TransparentFX
