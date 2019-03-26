@@ -1303,6 +1303,7 @@ MonoBehaviour:
   linkedObject: {fileID: 557147668}
   rightHand: {fileID: 396932663}
   leftHand: {fileID: 527133401}
+  gunHand: {fileID: 0}
   bullet: {fileID: 1170158472373774, guid: 6a5c4c25463e64b45ad1386aa84cd321, type: 2}
   endOfBarrel: {fileID: 2027379631}
   bulletSpeed: 1000

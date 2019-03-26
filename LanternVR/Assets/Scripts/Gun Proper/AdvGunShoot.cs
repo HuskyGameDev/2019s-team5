@@ -18,37 +18,89 @@
         public float bulletSpeed = 1000f;
         public float bulletLife = 5f;
 
-        private int ammoCount;
+        public int ammoCount;
         public int ammoLimit; //The max amount of ammo allowed
 
-        public bool checkHand;
+        private void Start()
+        {
+            linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
+            linkedObject.InteractableObjectGrabbed += OnInteractableObjectGrabbed;
+            linkedObject.InteractableObjectUngrabbed += OnInteractableObjectUngrabbed;
+        }
 
         protected virtual void OnEnable() {
             //gunHand = leftHand;
 
-            linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
+            
 
             if (linkedObject != null) {
                 linkedObject.InteractableObjectUsed += InteractableObjectUsed;
             }
+            
 
-            if(transform.parent != null && transform.parent.name.CompareTo("controller_right") == 1)
+            
+
+        }
+
+        protected virtual void OnInteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
+        {
+            CheckHand(e.interactingObject.name);
+
+
+        }
+
+        protected virtual void OnInteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
+        {
+            CheckHand("DROP");
+
+        }
+
+        //Return 0 for left, 1 for right, -1 for drop
+        private int CheckHand(string aliasName)
+        {
+            int check = -2;
+
+            
+            if (aliasName == ("RightControllerScriptAlias")) //Right Hand
             {
+                //Reset the button if it just swaps hands
+                if (gunHand != null)
+                    gunHand.ButtonOneReleased -= DoButtonOneReleased;
+
                 gunHand = rightHand;
+
+                //Double check if null
+                if (gunHand != null)
+                    gunHand.ButtonOneReleased += DoButtonOneReleased;
+
+                check = 1;
+                
             }
-            else if (transform.parent != null && transform.parent.name.CompareTo("controller_left") == 1)
+            else if (aliasName == ("LeftControllerScriptAlias")) //Left Hand
             {
+                //Reset the button if it just swaps hands
+                if (gunHand != null)
+                    gunHand.ButtonOneReleased -= DoButtonOneReleased;
+
                 gunHand = leftHand;
+
+                //Double check if null
+                if (gunHand != null)
+                    gunHand.ButtonOneReleased += DoButtonOneReleased;
+
+                check = 0;
             }
-
-            UnityEngine.Debug.Log("111");
-            checkHand = true;
-
-            if (gunHand != null)
+            else //neither hand
             {
-                gunHand.ButtonOneReleased += DoButtonOneReleased;
+
+                if (gunHand != null)
+                    gunHand.ButtonOneReleased -= DoButtonOneReleased;
+
+                gunHand = null;
+                check = -1;
             }
 
+            return check;
         }
 
         protected virtual void OnDisable() {
@@ -56,36 +108,27 @@
                 linkedObject.InteractableObjectUsed -= InteractableObjectUsed;
             }
 
-            if (gunHand != null)
-            {
-                gunHand.ButtonOneReleased -= DoButtonOneReleased;
-                gunHand = null;
-            }
-
-            checkHand = false;
 
         }
 
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e) {
-           
-            Fire();
+            if (bullet != null && ammoCount > 0)
+                Fire();
             
         }
 
         void Fire() {
-            if (bullet != null && ammoCount > 0)
+
+            GameObject clonedProjectile = Instantiate(bullet, endOfBarrel.position, endOfBarrel.rotation);
+            Rigidbody projectileRigidbody = clonedProjectile.GetComponent<Rigidbody>();
+            if (projectileRigidbody != null)
             {
-
-                GameObject clonedProjectile = Instantiate(bullet, endOfBarrel.position, endOfBarrel.rotation);
-                Rigidbody projectileRigidbody = clonedProjectile.GetComponent<Rigidbody>();
-                if (projectileRigidbody != null)
-                {
-                    projectileRigidbody.AddForce(clonedProjectile.transform.forward * bulletSpeed);
-                }
-                Destroy(clonedProjectile, bulletLife);
-
-                ammoCount--;
+                projectileRigidbody.AddForce(clonedProjectile.transform.forward * bulletSpeed);
             }
+            Destroy(clonedProjectile, bulletLife);
+
+            ammoCount--;
+            
         }
 
         void Awake() {
@@ -94,7 +137,7 @@
 
         // Update is called once per frame
         void Update() {
-
+            
         }
 
         private void DoButtonOneReleased(object sender, ControllerInteractionEventArgs e)
