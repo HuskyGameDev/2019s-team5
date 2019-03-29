@@ -604,11 +604,14 @@
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
     <Compile Include="Assets\Scripts\ActivateTakeDamage.cs" />
     <Compile Include="Assets\Scripts\CandleTrigger.cs" />
+    <Compile Include="Assets\Scripts\Gun Proper\AdvGunShoot.cs" />
     <Compile Include="Assets\Scripts\MLanternControl.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\RightControllerListener.cs" />
     <Compile Include="Assets\Scripts\ShootGun.cs" />
     <Compile Include="Assets\Scripts\TakeDamage.cs" />
     <Compile Include="Assets\Scripts\WeakPoint.cs" />
+    <Compile Include="Assets\Scripts\WeakPointRandomizer.cs" />
     <Compile Include="Assets\VRTK\Examples\ExampleResources\SceneResources\[001 - Interactions] ControllerEvents\Scripts\VRTKExample_ControllerEventsDelegateListeners.cs" />
     <Compile Include="Assets\VRTK\Examples\ExampleResources\SceneResources\[002 - Pointers] StraightPointer\Scripts\VRTKExample_PointerObjectHighlighterActivator.cs" />
     <Compile Include="Assets\VRTK\Examples\ExampleResources\SceneResources\[003 - Pointers] BezierPointer\Scripts\VRTKExample_BezierPointerChanger.cs" />
