@@ -12,31 +12,31 @@
 
         protected virtual void OnEnable()
         {
-            UnityEngine.Debug.Log("444");
+            //UnityEngine.Debug.Log("444");
             linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
 
             if (linkedObject != null)
             {
-                UnityEngine.Debug.Log("555");
+               //UnityEngine.Debug.Log("555");
                 linkedObject.InteractableObjectUsed += InteractableObjectUsed;
             }
         }
 
         protected virtual void OnDisable()
         {
-            UnityEngine.Debug.Log("333");
+            //UnityEngine.Debug.Log("333");
             if (linkedObject != null)
             {
-                UnityEngine.Debug.Log("666");
+                //UnityEngine.Debug.Log("666");
                 linkedObject.InteractableObjectUsed -= InteractableObjectUsed;
             }
         }
 
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e)
         {
-            UnityEngine.Debug.Log("111");
+            //UnityEngine.Debug.Log("111");
             FireProjectile();
-            UnityEngine.Debug.Log("222");
+            //UnityEngine.Debug.Log("222");
         }
 
         protected virtual void FireProjectile()
