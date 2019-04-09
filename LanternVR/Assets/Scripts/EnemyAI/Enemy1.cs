@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Soldier : vp_DamageHandler
+public class Enemy1 : MonoBehaviour
 {
     private Animator _animator;
 
@@ -26,9 +26,8 @@ public class Soldier : vp_DamageHandler
     public AudioClip GunSound = null;
 
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -68,45 +67,50 @@ public class Soldier : vp_DamageHandler
 
         }
     }
-
-    public void ShootEvent()
-    {
-        if (m_Audio != null)
+    /*
+        public void ShootEvent()
         {
-            m_Audio.PlayOneShot(GunSound);
+            if (m_Audio != null)
+            {
+                m_Audio.PlayOneShot(GunSound);
+            }
+
+            float random = Random.Range(0.0f, 1.0f);
+
+            // The higher the accuracy is, the more likely the player will be hit
+            bool isHit = random > 1.0f - HitAccuracy;
+
+            if (isHit)
+            {
+                Player.SendMessage("Damage", DamagePoints, 
+                    SendMessageOptions.DontRequireReceiver);
+            }
         }
 
-        float random = Random.Range(0.0f, 1.0f);
-
-        // The higher the accuracy is, the more likely the player will be hit
-        bool isHit = random > 1.0f - HitAccuracy;
-
-        if (isHit)
+        public override void Die()
         {
-            Player.SendMessage("Damage", DamagePoints, 
-                SendMessageOptions.DontRequireReceiver);
+            if (!enabled || !vp_Utility.IsActive(gameObject))
+                return;
+
+            if (m_Audio != null)
+            {
+                m_Audio.pitch = Time.timeScale;
+                m_Audio.PlayOneShot(DeathSound);
+            }
+
+            _navMeshAgent.enabled = false;
+
+            _animator.SetBool("IsFollow", false);
+            _animator.SetBool("Attack", false);
+
+            _animator.SetTrigger("Die");
+
+            Destroy(GetComponent<vp_SurfaceIdentifier>());
+
         }
-    }
 
-    public override void Die()
-    {
-        if (!enabled || !vp_Utility.IsActive(gameObject))
-            return;
+        https://www.youtube.com/watch?v=CHV1ymlw-P8  navmesh video
 
-        if (m_Audio != null)
-        {
-            m_Audio.pitch = Time.timeScale;
-            m_Audio.PlayOneShot(DeathSound);
-        }
 
-        _navMeshAgent.enabled = false;
-
-        _animator.SetBool("IsFollow", false);
-        _animator.SetBool("Attack", false);
-
-        _animator.SetTrigger("Die");
-
-        Destroy(GetComponent<vp_SurfaceIdentifier>());
-
-    }
+        */
 }
