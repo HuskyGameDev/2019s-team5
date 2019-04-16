@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/MapRooms/BilliardsRoom.unity
+- path: Assets/Scenes/Adv Testing (GUN).unity
   isLoaded: 1
   isActive: 1

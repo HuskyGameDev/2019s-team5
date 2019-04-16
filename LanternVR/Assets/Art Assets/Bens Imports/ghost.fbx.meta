@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: e32709e93f15a8f4e8a18de08c6f2649
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: chest
+    100004: Cube
+    100006: Cube.001
+    100008: Cube.002
+    100010: Cube.003
+    100012: Cube.004
+    100014: Cube.005
+    100016: Cube.006
+    100018: //RootNode
+    100020: head
+    100022: head_end
+    100024: Left bicep
+    100026: left elbow
+    100028: left elbow_end
+    100030: left foot
+    100032: left foot ik
+    100034: left foot_end
+    100036: Left forearm
+    100038: Left hand
+    100040: Left hand_end
+    100042: left knee
+    100044: left knee_end
+    100046: Left shin
+    100048: Left shin_end
+    100050: Left thigh
+    100052: left wrist ik
+    100054: left wrist ik_end
+    100056: Right bicep.001
+    100058: right elbow.001
+    100060: right elbow.001_end
+    100062: right foot ik.001
+    100064: right foot.001
+    100066: right foot.001_end
+    100068: Right forearm.001
+    100070: Right hand.001
+    100072: Right hand.001_end
+    100074: right knee.001
+    100076: right knee.001_end
+    100078: Right shin.001
+    100080: Right shin.001_end
+    100082: Right thigh.001
+    100084: right wrist ik.001
+    100086: right wrist ik.001_end
+    100088: waist
+    400000: Armature
+    400002: chest
+    400004: Cube
+    400006: Cube.001
+    400008: Cube.002
+    400010: Cube.003
+    400012: Cube.004
+    400014: Cube.005
+    400016: Cube.006
+    400018: //RootNode
+    400020: head
+    400022: head_end
+    400024: Left bicep
+    400026: left elbow
+    400028: left elbow_end
+    400030: left foot
+    400032: left foot ik
+    400034: left foot_end
+    400036: Left forearm
+    400038: Left hand
+    400040: Left hand_end
+    400042: left knee
+    400044: left knee_end
+    400046: Left shin
+    400048: Left shin_end
+    400050: Left thigh
+    400052: left wrist ik
+    400054: left wrist ik_end
+    400056: Right bicep.001
+    400058: right elbow.001
+    400060: right elbow.001_end
+    400062: right foot ik.001
+    400064: right foot.001
+    400066: right foot.001_end
+    400068: Right forearm.001
+    400070: Right hand.001
+    400072: Right hand.001_end
+    400074: right knee.001
+    400076: right knee.001_end
+    400078: Right shin.001
+    400080: Right shin.001_end
+    400082: Right thigh.001
+    400084: right wrist ik.001
+    400086: right wrist ik.001_end
+    400088: waist
+    2100000: Material
+    4300000: Cube.006
+    4300002: Cube.005
+    4300004: Cube.004
+    4300006: Cube.003
+    4300008: Cube.002
+    4300010: Cube.001
+    4300012: Cube
+    9500000: //RootNode
+    13700000: Cube
+    13700002: Cube.001
+    13700004: Cube.002
+    13700006: Cube.003
+    13700008: Cube.004
+    13700010: Cube.005
+    13700012: Cube.006
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,7 +23,7 @@ public class Enemy1 : MonoBehaviour
 
     public float DamagePoints = 2.0f;
 
-    public AudioClip GunSound = null;
+   
 
 
     protected void Awake()
