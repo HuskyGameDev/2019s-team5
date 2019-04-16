@@ -21,6 +21,11 @@
         public int ammoCount;
         public int ammoLimit; //The max amount of ammo allowed
 
+        public Transform GUNBarrel;
+        public Transform GUNCylinder;
+
+        private bool BreakOpened = false;
+
         private void Start()
         {
             linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
@@ -31,13 +36,9 @@
         protected virtual void OnEnable() {
             //gunHand = leftHand;
 
-            
-
             if (linkedObject != null) {
                 linkedObject.InteractableObjectUsed += InteractableObjectUsed;
             }
-            
-
             
 
         }
@@ -112,11 +113,20 @@
         }
 
         protected virtual void InteractableObjectUsed(object sender, InteractableObjectEventArgs e) {
-            if (bullet != null && ammoCount > 0)
-                Fire();
+            if (!BreakOpened)
+            {
+                if (bullet != null && ammoCount > 0)
+                {
+                    Fire();
+                }
+
+                GUNCylinder.Rotate(-60, 0, 0);
+            } 
+               
             
         }
 
+        //Actually firing the round
         void Fire() {
 
             GameObject clonedProjectile = Instantiate(bullet, endOfBarrel.position, endOfBarrel.rotation);
@@ -140,8 +150,25 @@
             
         }
 
+        //Reload Function
+
+        void Break()
+        {
+            BreakOpened = !BreakOpened;
+
+            if (BreakOpened)
+            {
+                GUNBarrel.Rotate(0, 0, -60);
+            } else
+            {
+                GUNBarrel.Rotate(0,0,60);
+            }
+            
+        }
+
         private void DoButtonOneReleased(object sender, ControllerInteractionEventArgs e)
         {
+            Break();
             ammoCount = ammoLimit;
         }
     }
