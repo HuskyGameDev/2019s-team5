@@ -24,20 +24,23 @@ public class WeakPointRandomizer : MonoBehaviour {
 
         for(int i = 0; i < weakPoints.Length; i++)          // set all locations to false 
         {
-            weakPoints[i].SetActive(false);
+            weakPoints[i].GetComponent<WeakPoint>().enabled = false;
+            weakPoints[i].GetComponent<Collider>().enabled = false;
         }
 
-        int numberOfWeakpoints = rnd.Next(1, 3);            //generate random number for the weakpoints
+        int numberOfWeakpoints = rnd.Next(1, 4);            //generate random number for the weakpoints
+        GetComponent<TakeDamage>().health = numberOfWeakpoints;
         
         for(int i = 1; i <= numberOfWeakpoints; i++)
         {
            
 
-            int weaknessPosition = rnd.Next(1, 9);          // generate random number for the index that will be turned on 
+            int weaknessPosition = rnd.Next(0, weakPoints.Length);          // generate random number for the index that will be turned on 
 
-            if(weakPoints[weaknessPosition] == false)
+            if(weakPoints[weaknessPosition].GetComponent<WeakPoint>().enabled == false)
             {
-                weakPoints[weaknessPosition].SetActive(true);   // activate the weakness at index 
+                weakPoints[weaknessPosition].GetComponent<WeakPoint>().enabled = true;   // activate the weakness at index 
+                weakPoints[weaknessPosition].GetComponent<Collider>().enabled = true;
 
             }
             else

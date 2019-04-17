@@ -17,8 +17,9 @@ public class CandleTrigger : MonoBehaviour {
             foreach (WeakPoint wp in weakList) {
                 if(wp != null) {
                     Physics.Raycast(transform.position, wp.transform.position - transform.position, out hit);
-
-                    if (hit.transform == wp.transform) {
+                    
+                    //if (hit.transform == wp.transform) {
+                    if (hit.transform.tag == "CandleTriggered") { 
                         wp.Seen(true);
                     }
                     else {
@@ -31,7 +32,6 @@ public class CandleTrigger : MonoBehaviour {
     }
 	
 	private void OnTriggerEnter(Collider other) {
-        
         if (other.tag == "CandleTriggered") {
             WeakPoint wp = other.GetComponent<WeakPoint>();
             wp.Seen(true);

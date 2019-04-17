@@ -5,11 +5,13 @@ using UnityEngine;
 public class ClueAppear : MonoBehaviour {
 
     public GameObject clue;
+    public GameObject highlight;
     public bool hasClue = false;
 	// Use this for initialization
 	void Start () {
         clue.SetActive(false);
-	}
+        highlight.SetActive(true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,6 +23,7 @@ public class ClueAppear : MonoBehaviour {
         if (other.transform.tag == "MainCamera" && hasClue)
         {
             clue.SetActive(true);
+            highlight.SetActive(false);
         }
     }
 }

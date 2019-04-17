@@ -9,12 +9,24 @@ public class ActivateTakeDamage : MonoBehaviour {
     public TakeDamage parentNode; //The parent node that holds the target that will be hit.
 
 
-    void OnTriggerEnter(Collider col) {
-        if (!triggered && (col.transform.name == "bat" || col.transform.name == "Sphere")) {
+    /*void OnTriggerEnter(Collider col) {
+        if (!triggered && col.transform.tag == "SnapBullet") {
             parentNode.SubtractHealth(); // call TakeDamage on an object collision
             triggered = true;            //Object can't take anymore damage
             gameObject.SetActive(false);
             Debug.Log(col.transform.name);
+        }
+    }*/
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (!triggered && col.transform.tag == "SnapBullet")
+        {
+            parentNode.SubtractHealth(); // call TakeDamage on an object collision
+            triggered = true;            //Object can't take anymore damage
+            gameObject.GetComponent<WeakPoint>().enabled = false;   // activate the weakness at index 
+            gameObject.GetComponent<Collider>().enabled = false;
+            Destroy(col.gameObject);
         }
     }
 
