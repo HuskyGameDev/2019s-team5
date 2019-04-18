@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy1 : MonoBehaviour
 {
-    private Animator _animator;
+    //private Animator _animator;
 
     private NavMeshAgent _navMeshAgent;
 
@@ -21,7 +21,7 @@ public class Enemy1 : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float HitAccuracy = 0.5f;
 
-    public float DamagePoints = 2.0f;
+    public int DamagePoints = 25;
 
    
 
@@ -31,7 +31,7 @@ public class Enemy1 : MonoBehaviour
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
 
     }
 
@@ -41,7 +41,7 @@ public class Enemy1 : MonoBehaviour
         if (_navMeshAgent.enabled)
         {
             float dist = Vector3.Distance(Player.transform.position, this.transform.position);
-            bool shoot = false;
+            bool shoot = (dist < AttackDistance);
             bool follow = (dist < FollowDistance);
 
             if (follow)
@@ -61,9 +61,22 @@ public class Enemy1 : MonoBehaviour
             if (!follow || shoot)
                 _navMeshAgent.SetDestination(transform.position);
 
+            if (shoot)
+            {
+                float random = Random.Range(0.0f, 1.0f);
+                
+                // The higher the accuracy is, the more likely the player will be hit
+                bool isHit = random < HitAccuracy;
+                random = Random.Range(0.0f, 1.0f);
+                if (isHit && random < AttackProbability)
+                {
+                    Player.SendMessage("damage", DamagePoints);
+                }
+            }
 
-            _animator.SetBool("Shoot", shoot);
-            _animator.SetBool("Run", follow);
+
+            //_animator.SetBool("Shoot", shoot);
+            //_animator.SetBool("Run", follow);
 
         }
     }

@@ -21,7 +21,7 @@ public class TakeDamage : MonoBehaviour {
         health--; // decrements the health of the object by one
         if (health <= 0)
         {
-            Destroy(transform.root.gameObject); // destroy the object and all associated objects if it loses all health
+            Destroy(gameObject); // destroy the object and all associated objects if it loses all health
         }
     }
 }

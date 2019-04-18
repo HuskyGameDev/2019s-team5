@@ -118,9 +118,9 @@
                 if (bullet != null && ammoCount > 0)
                 {
                     Fire();
+                    GUNCylinder.Rotate(-60, 0, 0);
                 }
-
-                GUNCylinder.Rotate(-60, 0, 0);
+                
             } 
                
             
@@ -136,6 +136,8 @@
                 projectileRigidbody.AddForce(clonedProjectile.transform.forward * bulletSpeed);
             }
             Destroy(clonedProjectile, bulletLife);
+
+            GUNBarrel.SendMessage("FireBullet", ammoCount);
 
             ammoCount--;
             
@@ -159,9 +161,14 @@
             if (BreakOpened)
             {
                 GUNBarrel.Rotate(0, 0, -60);
+                GUNCylinder.localRotation = Quaternion.identity;
+                GUNBarrel.gameObject.GetComponent<Collider>().enabled = true;
+                GUNBarrel.SendMessage("EjectCasings");
+                ammoCount = 0;
             } else
             {
                 GUNBarrel.Rotate(0,0,60);
+                GUNBarrel.gameObject.GetComponent<Collider>().enabled = false;
             }
             
         }
@@ -169,7 +176,6 @@
         private void DoButtonOneReleased(object sender, ControllerInteractionEventArgs e)
         {
             Break();
-            ammoCount = ammoLimit;
         }
     }
 
