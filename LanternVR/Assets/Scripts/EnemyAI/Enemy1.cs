@@ -17,18 +17,19 @@ public class Enemy1 : MonoBehaviour
 
     [Range(0.0f, 1.0f)]
     public float AttackProbability = 0.5f;
-
-    [Range(0.0f, 1.0f)]
-    public float HitAccuracy = 0.5f;
+    
+    public float AttackPeriodSeconds = 1f;
+    private float timeStamp;
 
     public int DamagePoints = 25;
-
-   
+    public GameObject sound;
+    private bool seen;
 
 
     protected void Awake()
     {
-
+        timeStamp = Time.time;
+        seen = false;
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         //_animator = GetComponent<Animator>();
@@ -44,16 +45,13 @@ public class Enemy1 : MonoBehaviour
             bool shoot = (dist < AttackDistance);
             bool follow = (dist < FollowDistance);
 
-            if (follow)
+            if (follow && !seen)
             {
-                float random = Random.Range(0.0f, 1.0f);
-                if (random > (1.0f - AttackProbability) && dist < AttackDistance)
-                {
-                    shoot = true;
-                }
+                seen = true;
+                sound.SendMessage("PlayAudio", "trigger");
             }
 
-            if (follow)
+            if (seen)
             {
                 _navMeshAgent.SetDestination(Player.transform.position);
             }
@@ -66,11 +64,12 @@ public class Enemy1 : MonoBehaviour
                 float random = Random.Range(0.0f, 1.0f);
                 
                 // The higher the accuracy is, the more likely the player will be hit
-                bool isHit = random < HitAccuracy;
-                random = Random.Range(0.0f, 1.0f);
-                if (isHit && random < AttackProbability)
+                bool isHit = random < AttackProbability;
+                if (isHit && timeStamp <= Time.time)
                 {
+                    timeStamp = Time.time + AttackPeriodSeconds;
                     Player.SendMessage("damage", DamagePoints);
+                    sound.SendMessage("PlayAudio", "attack");
                 }
             }
 

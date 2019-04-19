@@ -7,7 +7,7 @@
 
     public class CluePickUp : MonoBehaviour
     {
-
+        public GameObject audioPlayer;
         private VRTK_InteractableObject linkedObject;
         public GameObject cluePosition;
 
@@ -28,6 +28,7 @@
         protected virtual void OnInteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
         {
             cluePosition.GetComponent<ClueAppear>().hasClue = true;
+            audioPlayer.SendMessage("PlayClueSound", GetComponent<Transform>());
             Destroy(gameObject);
 
 

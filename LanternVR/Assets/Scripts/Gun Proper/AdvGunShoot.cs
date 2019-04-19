@@ -26,6 +26,8 @@
 
         private bool BreakOpened = false;
 
+        public GameObject sound;
+
         private void Start()
         {
             linkedObject = (linkedObject == null ? GetComponent<VRTK_InteractableObject>() : linkedObject);
@@ -46,14 +48,14 @@
         protected virtual void OnInteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
         {
             CheckHand(e.interactingObject.name);
-
+            sound.SendMessage("PlayAudio", "pickup");
 
         }
 
         protected virtual void OnInteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
         {
             CheckHand("DROP");
-
+            sound.SendMessage("PlayAudio", "putdown");
         }
 
         //Return 0 for left, 1 for right, -1 for drop
@@ -138,6 +140,7 @@
             Destroy(clonedProjectile, bulletLife);
 
             GUNBarrel.SendMessage("FireBullet", ammoCount);
+            sound.SendMessage("PlayAudio", "gunshot");
 
             ammoCount--;
             
@@ -164,11 +167,13 @@
                 GUNCylinder.localRotation = Quaternion.identity;
                 GUNBarrel.gameObject.GetComponent<Collider>().enabled = true;
                 GUNBarrel.SendMessage("EjectCasings");
+                sound.SendMessage("PlayAudio", "eject");
                 ammoCount = 0;
             } else
             {
                 GUNBarrel.Rotate(0,0,60);
                 GUNBarrel.gameObject.GetComponent<Collider>().enabled = false;
+                sound.SendMessage("PlayAudio", "close");
             }
             
         }
