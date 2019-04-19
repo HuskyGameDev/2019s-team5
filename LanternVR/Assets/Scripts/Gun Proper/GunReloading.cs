@@ -18,8 +18,12 @@
 
         // Use this for initialization
         void Start() {
-            foreach (GameObject bullet in bulletLocations)
+            foreach (GameObject bullet in bulletLocations) {
                 bullet.SetActive(true);
+                if(bullet.transform.GetChild(1).GetChild(0) != null)
+                    bullet.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+            }
+                
 
             ammoLimit = shooter.ammoLimit;
 
@@ -40,6 +44,8 @@
                 if (shooter.ammoCount < shooter.ammoLimit)
                 {
                     bulletLocations[shooter.ammoCount].SetActive(true);
+                    if(bulletLocations[shooter.ammoCount].transform.GetChild(1).GetChild(0) != null)
+                     bulletLocations[shooter.ammoCount].transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
                     filled[shooter.ammoCount] = true;
                     shooter.ammoCount++;
                     ammoLimit = shooter.ammoCount;
@@ -49,9 +55,11 @@
             }
         }
 
+        //Activates the bulletspent cylinder
         private void FireBullet(int count)
         {
-            bulletLocations[ammoLimit - count].SetActive(false);
+            if(bulletLocations[ammoLimit - count].transform.GetChild(1).GetChild(0) != null)
+                bulletLocations[ammoLimit - count].transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
         }
 
         private void EjectCasings()
@@ -67,11 +75,10 @@
                     Transform spawn = bullet.transform;
                     GameObject clonedProjectile = Instantiate(casing, spawn.position, spawn.rotation);
                     Rigidbody projectileRigidbody = clonedProjectile.GetComponent<Rigidbody>();
-                    Vector3 ejectDirection = clonedProjectile.transform.forward;
-                    ejectDirection.y -= 1f;
+                
                     if (projectileRigidbody != null)
                     {
-                        projectileRigidbody.AddForce(-ejectDirection.normalized * ejectSpeed);
+                        projectileRigidbody.AddForce(-clonedProjectile.transform.right * ejectSpeed);
                     }
                     Destroy(clonedProjectile, casingLife);
                 }
